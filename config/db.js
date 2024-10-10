@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 console.log('process.env.DATABASE_URL',process.env.DATABASE_URL)
-const database = "postgresql://lalitaswal:B76CLP6S-HX5FRA0GZK-wg@day-dragon-3587.j77.aws-ap-south-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
+const database = "postgresql://neondb_owner:4JrXZ2lmYbaG@ep-royal-heart-a1t9mgz7.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 const sequelize = new Sequelize(process.env.DATABASE_URL ||database, {
   dialect: "postgres",
   dialectOptions: {

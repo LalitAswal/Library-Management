@@ -1,45 +1,37 @@
-// models/User.js
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db.js";
+import  sequelize from "../config/db.js";
 
-const User = sequelize.define(
-  "user",
+const Book = sequelize.define(
+  "book",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // email: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    token: {
-      type: DataTypes.STRING,
-    },
-    role: {
-      type: DataTypes.ENUM("member", "librarian"),
-      defaultValue: "member",
+    status: {
+      type: DataTypes.ENUM("AVAILABLE", "BORROWED"),
+      defaultValue: "AVAILABLE",
       allowNull: false,
     },
     isDeleted: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
     },
   },
   {
-    tableName: "user",
+    tableName: "book",
     timestamps: true,
   }
 );
 
-export default User;
-
+export default Book;

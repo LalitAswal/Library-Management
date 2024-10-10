@@ -1,15 +1,19 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import sequelize from "./config/db.js";
+import cors from 'cors';
 
 // routes list start
 import user from "./routes/user.routes.js";
+import book from "./routes/books.routes.js";
 // routes end
 
 dotenv.config()
 
 const app = express();
 
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -18,11 +22,10 @@ app.get("/",(req,res)=>{
     console.log(req.ip)
 })
 
-// middle for routes
-app.use('/', user)
+// middleware for routes
+app.use('/user', user)
+app.use('/book', book)
 
-
-// await connect(DB_NAME);
 
 
 const PORT = process.env.PORT || 8000
@@ -31,7 +34,7 @@ const PORT = process.env.PORT || 8000
 sequelize.sync({force:false}).then(()=>{
     console.log('Database & table created!')
 }).catch(err =>{
-    console.error('unable to create table, shutting down ...')
+    console.error('unable to create table, shutting down ...', err)
 })
 
 
