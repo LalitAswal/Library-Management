@@ -2,8 +2,7 @@
 
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET =
-  process.env.JWT_SECRET || "May_your_coffee_kick_in_before_reality_does";
+const JWT_SECRET = process.env.JWT_SECRET || "May_your_coffee_kick_in_before_reality_does";
 
 export const userAuth = async (req, res, next) => {
   try {

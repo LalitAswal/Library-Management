@@ -2,6 +2,10 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../database/userdb.js";
 
+//for file read-write
+import fs from "fs";
+import csvParser from "csv-parser";
+
 export const userRegistrationService = async (userName, password) => {
   const existingUser = await User.findOne({ where: { username: userName } });
   console.log("existingUser", existingUser);
@@ -59,20 +63,84 @@ export const deleteUserService = async (id) => {
   return result;
 };
 
-export const getAllUsersService = async () =>{
-  const result = await User.findAll({}, {
-    where:{
-      role: 'member',
+export const getAllUsersService = async () => {
+  const result = await User.findAll(
+    {},
+    {
+      where: {
+        role: "member",
+      },
     }
-  });
-  console.log('checking result', result);
-  if(result.length<1){
-    throw new Error(`no member list found `)
+  );
+  console.log("checking result", result);
+  if (result.length < 1) {
+    throw new Error(`no member list found `);
   }
   return result;
-}
+};
 
+export const userUpdateService = async (id, username, role) => {
 
-// const userUpdateService = async(id) => {
+  let updateData ={};
+  if(username){
+    updateData.username = username
+  }
 
-// };
+  if(role){
+    updateData.role = role
+  }
+  const result = await User.update({updateData}, 
+    {
+      where:{
+        id:id
+      },
+      returning: true,
+    })
+
+    return result;
+};
+
+export const userDetailsService = async (id) => {
+  const userDetails = await User.findByPk(id)
+  if(!userDetails){
+    throw new Error("User doesn't exist")
+  }
+  return userDetails;
+};
+
+export const bulkAddUserService = (filePath) => {
+  return new Promise((resolve, reject) => {
+    const users = [];
+    console.log("checking file path service");
+
+    // Parse the CSV file
+    fs.createReadStream(filePath)
+      .pipe(csvParser())
+      .on("data", (row) => {
+        users.push({
+          username: row.username,
+          password: row.password,
+          role: row.role || "member",
+          token: row.token || null,
+        });
+      })
+      .on("end", async () => {
+        try {
+          // Bulk insert into the database
+          await User.bulkCreate(users);
+
+          // Cleanup the uploaded file
+          fs.unlinkSync(filePath);
+
+          resolve({ success: true, count: users.length });
+        } catch (error) {
+          console.error("Error inserting users:", error.message);
+          reject(new Error("Failed to add users to the database"));
+        }
+      })
+      .on("error", (error) => {
+        console.error("Error reading CSV file:", error.message);
+        reject(new Error("Error reading CSV file"));
+      });
+  });
+};

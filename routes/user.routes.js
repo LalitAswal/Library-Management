@@ -4,24 +4,41 @@ import {
   registration,
   deleteUser,
   getAllUsers,
-//   userUpdate,
+getUserDetails,
+userUpdate,
+addBulkUser
 } from "../controllers/user.controller.js";
 import { userAuth } from "../middleware/auth.js";
 import { checkPermission } from "../middleware/roleMiddleWare.js";
 const router = express.Router();
-// member: ["viewbooks", "borrow", "return"],
 
-  //   librarian: ["viewbooks", "create", "update", "delete", "viewall"],
+// file upload
+import multer from "multer";
 
-  // 
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads"); 
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 
+
+let upload = multer({ storage });
+
+
+
+// user routes 
 router.post("/register", registration);
-
 router.post("/login", login);
-router.get("/", userAuth,checkPermission("viewbooks"),getAllUsers);
-// TODO update user left
-// router.post("/admin/login", adminLogin);
-// router.post("/userUpdate/:id", userUpdate);
-router.delete("/:id",userAuth,checkPermission("deletedate"), deleteUser);
+router.get("/:id", getUserDetails);
+router.post("/userUpdate/:id",userAuth,checkPermission("update"), userUpdate);
+
+
+// admin routes
+router.get("/", getAllUsers);
+router.post("/bulkAddUser",upload.single("file"), addBulkUser) // add bulk user
+router.delete("/:id",userAuth,checkPermission("deleteDate"), deleteUser);
 
 export default router;

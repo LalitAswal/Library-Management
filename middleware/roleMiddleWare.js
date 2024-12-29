@@ -1,16 +1,15 @@
 const rolePermission = {
-  member: ["viewbooks", "borrow", "return"],
-  librarian: ["viewbooks", "create", "update", "deletedate", "viewall"],
+  member: ["viewBooks", "borrow", "return"],
+  librarian: ["viewBooks", "create", "update", "deleteDate", "viewAll"],
 };
 
 export const checkPermission = (requiredPermission) => (req, res, next) => {
   console.log("rolePermission", requiredPermission);
   const userRole = req.role ?? "";
-  console.log("rolePermission[userRole?.toLowerCase()]",rolePermission[userRole?.toLowerCase()])
-  console.log("requiredPermission?.toLowerCase()",requiredPermission?.toLowerCase())
+  console.log("checking role", userRole)
   if (
     rolePermission[userRole?.toLowerCase()].includes(
-        requiredPermission?.toLowerCase()
+        requiredPermission
     )
   ) {
     return next();

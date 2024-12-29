@@ -6,6 +6,8 @@ import {
   borrowedBookListService,
   borrowBooksService,
   returnBookService,
+  searchBookService,
+  bulkBookUploadService,
 } from "../service/book.service.js";
 
 export const addBook = async (req, res) => {
@@ -41,7 +43,7 @@ export const updateBook = async (req, res) => {
 
     const result = await updateBookService(id, title, author);
 
-    res.status(200).json({
+    res.status(201).json({
       message: "Book updated successfully",
       data: result,
     });
@@ -128,3 +130,28 @@ export const returnBook = async (req, res) => {
     res.status(500).json({ message: error?.message });
   }
 };
+
+export const searchBook = async (req, res) =>{
+  try {
+    const { title="", author="", status="" } = req.query ?? "";
+    console.log('checking query', req.query)
+    const result = await searchBookService(title, author, status);
+
+    res.status(201).json({
+      message: "Book search result",
+      response: result,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error?.message });
+  }
+}
+
+export const bulkBookUpload = async(req, res) =>{
+  try{
+    const bulkData = req?.file?.path;
+    const result = await bulkBookUploadService(bulkData);
+    res.status(200).json({ message: "Books uploaded successfully", response: result });
+  }catch(error){
+    res.status(500).json({ message: error?.message });
+  }
+}

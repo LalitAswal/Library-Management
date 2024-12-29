@@ -1,5 +1,8 @@
 import Book from "../database/booksdb.js";
 import BorrowHistory from "../database/borrowHistorydb.js";
+import fs from "fs";
+import csvParser from "csv-parser";
+
 
 export const addBookService = async (title, author) => {
   const bookIsExists = await Book.findOne({
@@ -112,3 +115,74 @@ export const returnBookService = async (id) => {
 
   return result;
 };
+
+export const searchBookService = async (title="", author="", status="")=>{
+
+  const query = {};
+  console.log('=================================')
+  console.log(title, author, status)
+  console.log('=================================')
+  if(title){
+    query.title =title
+  }else if(author){
+    query.author=author
+  }else{
+    query.status = status
+  }
+
+  const result = await Book.findAll({query})
+
+  return result
+
+}
+
+export const bulkBookUploadService = async (bulkData) => {
+  return new Promise((resolve, reject) => {
+    const books = [];
+
+    console.log("checking file path service book service", bulkData);
+
+    // Assuming bulkData is the file path, use fs.createReadStream to read the file
+    fs.createReadStream(bulkData)
+      .pipe(csvParser())
+      .on("data", (row) => {
+        console.log("checking row", row);
+
+        // Assuming the CSV columns match these keys exactly
+        books.push({
+          title: row.title,
+          author: row.author,
+          status: row.status || "AVAILABLE",  // Default value if status is not provided
+          isDeleted: row.isDeleted || false,  // Default value if isDeleted is missing
+        });
+      })
+      .on("end", async () => {
+        try {
+          console.log("checking books", books);
+
+          // Check if the books array is empty
+          if (books.length === 0) {
+            reject(new Error("No books data found in the CSV file"));
+            return;
+          }
+
+          // Bulk insert into the database (ensure your model accepts these fields)
+          await Book.bulkCreate(books);
+          console.log("Books inserted successfully");
+
+          // Cleanup the uploaded file after processing
+          fs.unlinkSync(bulkData); // Assuming `bulkData` is the full file path
+
+          resolve({ success: true, count: books.length });
+        } catch (error) {
+          console.error("Error inserting books:", error.message);
+          reject(new Error("Failed to add books to the database"));
+        }
+      })
+      .on("error", (error) => {
+        console.error("Error reading CSV file:", error.message);
+        reject(new Error("Error reading CSV file"));
+      });
+  });
+};
+
