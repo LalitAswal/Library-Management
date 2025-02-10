@@ -7,7 +7,8 @@ import {
   borrowBooks,
   returnBook,
   searchBook,
-  bulkBookUpload
+  bulkBookUpload, 
+  bookDetails
 } from "../controllers/books.controller.js";
 import { userAuth } from "../middleware/auth.js";
 const router = express.Router();
@@ -39,11 +40,11 @@ const upload = multer({storage});
 router.get("/", userAuth,checkPermission('viewAll'), allBooksList);
 router.post("/borrowBook",userAuth,checkPermission('borrow'), borrowBooks);
 router.post("/returnBook/:id",userAuth,checkPermission('return'), returnBook);
-router.post("/searchBook",userAuth,checkPermission("viewBooks"), searchBook)
+router.post("/searchBook",userAuth,checkPermission("viewBooks"), searchBook);
+router.get("/bookDetails/:id",userAuth,checkPermission("viewBooks"), bookDetails);
 
 
 // admin routes
-
 router.post("/",userAuth,checkPermission('create'), addBook);
 router.put("/:id",userAuth,checkPermission('update'), updateBook);
 router.delete("/:id",userAuth,checkPermission('viewAll'), deleteBook);

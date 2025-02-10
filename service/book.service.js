@@ -119,15 +119,18 @@ export const returnBookService = async (id) => {
 export const searchBookService = async (title="", author="", status="")=>{
 
   const query = {};
-  console.log('=================================')
-  console.log(title, author, status)
-  console.log('=================================')
+  console.table(title, author, status, id)
   if(title){
     query.title =title
-  }else if(author){
+  }
+   if(author){
     query.author=author
-  }else{
+  }
+   if (status){
     query.status = status
+  }
+  if(id){
+    query.id = id
   }
 
   const result = await Book.findAll({query})
@@ -186,3 +189,9 @@ export const bulkBookUploadService = async (bulkData) => {
   });
 };
 
+
+export const bookDetailsService = async (id)=>{
+
+  const bookDetails = await Book.findOne({where:{id}});
+  return bookDetails;
+}

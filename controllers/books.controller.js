@@ -8,6 +8,7 @@ import {
   returnBookService,
   searchBookService,
   bulkBookUploadService,
+  bookDetailsService
 } from "../service/book.service.js";
 
 export const addBook = async (req, res) => {
@@ -100,6 +101,20 @@ export const allBooksList = async (req, res) => {
     console.error("Error fetching all books list:", error);
     res.status(500).json({ message: error.message });
   }
+};
+
+export const bookDetails = async (req, res) =>{
+try {
+    const {id} = req.params ?? "";
+    console.log('checking query===>', req.params)
+    if(!id) return res.status(400).json({ message: "Book ID is required" });
+    const result = await bookDetailsService(id);
+    res.status(201).json({
+      message: "Book details",
+      response: result,})
+} catch (error) {
+  res.status(500).json({ message: error.message });
+}
 };
 
 export const borrowBooks = async (req, res) => {

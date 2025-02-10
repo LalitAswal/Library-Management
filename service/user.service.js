@@ -1,6 +1,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../database/userdb.js";
+//env
+import dotenv from "dotenv";
+dotenv.config()
 
 //for file read-write
 import fs from "fs";
@@ -8,18 +11,16 @@ import csvParser from "csv-parser";
 
 export const userRegistrationService = async (userName, password) => {
   const existingUser = await User.findOne({ where: { username: userName } });
-  console.log("existingUser", existingUser);
-  if (existingUser) {
+  if (existingUser?.dataValues) {
     throw new Error("Username already taken");
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, Number(process.env.JWT_SALT_ROUNDS));
 
   const newUser = await User.create({
     username: userName,
     password: hashedPassword,
   });
-  console.log(" newUser", newUser);
   return newUser?.id;
 };
 
