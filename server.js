@@ -1,11 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
-import sequelize from "./config/db.js";
 import cors from "cors";
 
 // Import routes
-import user from "./routes/user.routes.js";
-import book from "./routes/books.routes.js";
+import userRoutes from "./routes/user.routes.js";
+import bookRoutes from "./routes/books.routes.js";
 
 dotenv.config();
 
@@ -17,21 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Welcome to Library Management API!");
-  console.log(req.ip);
+  console.log("Client IP:", req.ip);
 });
 
-// Middleware for routes
-app.use("/user", user);
-app.use("/book", book);
-
-// Sync database
-sequelize
-  .sync({ force: false })
-  .then(() => {
-    console.log("Database & table created!");
-  })
-  .catch((err) => {
-    console.error("Unable to create table, shutting down ...", err);
-  });
+app.use("/user", userRoutes);
+app.use("/book", bookRoutes);
 
 export default app;
