@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 // Import routes
-import userRoutes from "./routes/user.routes.js";
-import bookRoutes from "./routes/books.routes.js";
+import userRoutes from "./api/routes/user.routes.js";
+import bookRoutes from "./api/routes/books.routes.js";
 
 dotenv.config();
 
