@@ -12,7 +12,8 @@
     "sequelize": "^6.37.4"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "name": "iit-m--server",
   "version": "1.0.0",
