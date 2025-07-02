@@ -41,11 +41,17 @@ Room for improvement:
 
 -   Global Error handling
 -   Security ( implementation of helmets, rate limiter)
--   UI 
+-   UI
+-   
 
 To do:
 -   Deployment Issue in Versal
--   Implementation of MongoDB Atlas
+-   validating
+-   monitoring and logging
+-   CAPTCHA and Google Authenticator
+-   Payment gateway implementation
+-   notification when the  user signs up
+-   notification when the due date is near/ book is avalible 
   
   
 
