@@ -1,7 +1,9 @@
-import app from "../server.js";
-import { createServer } from "http";
+import app from "./app.js";
+import { connectDB } from "./api/config/db.js";
 
-export default function handler(req, res) {
-  const server = createServer(app);
-  return server.emit("request", req, res);
-}
+connectDB();
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
