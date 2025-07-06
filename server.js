@@ -5,6 +5,8 @@ import cors from "cors";
 // Import routes
 import userRoutes from "./api/routes/user.routes.js";
 import bookRoutes from "./api/routes/books.routes.js";
+import "./api/config/db.js";
+
 
 dotenv.config();
 
@@ -22,4 +24,13 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 app.use("/book", bookRoutes);
 
-export default app;
+
+
+// sequelizeDB();
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// export default app;

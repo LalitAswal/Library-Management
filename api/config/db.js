@@ -30,7 +30,7 @@ const database = "postgresql://neondb_owner:4JrXZ2lmYbaG@ep-royal-heart-a1t9mgz7
 
 
 
-const sequelize = new Sequelize(process.env.DB_URL || database,  {
+const sequelizeDB = new Sequelize(process.env.DB_URL || database,  {
   dialect: "mysql", 
   dialectOptions: {
     ssl: {
@@ -41,4 +41,15 @@ const sequelize = new Sequelize(process.env.DB_URL || database,  {
   logging: false, 
 });
 
-export default sequelize;
+
+
+sequelizeDB.sync({ alter: true })
+  .then(() => {
+    console.log("📦 Database models synced");
+  })
+  .catch((err) => {
+    console.error("❌ Error syncing models:", err);
+  });
+
+
+export default sequelizeDB;
