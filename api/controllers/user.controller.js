@@ -29,7 +29,6 @@ export const registration = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { userName, password } = req.body;
-    console.log("req.body for login===>", req.body);
 
     if (!userName || !password) {
       throw new Error("Incorrect userName and password");
@@ -40,6 +39,7 @@ export const login = async (req, res) => {
     return res.status(200).json({
       message: "user Register Successfully",
       token: result,
+      userName:userName
     });
   } catch (error) {
     res.status(409).json({

@@ -1,5 +1,5 @@
 const rolePermission = {
-  member: ["viewBooks", "borrow", "return"],
+  member: ["viewBooks", "borrow", "return", "viewAll"],
   librarian: ["viewBooks", "create", "update", "deleteDate", "viewAll"],
 };
 

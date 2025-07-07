@@ -1,0 +1,4 @@
+Minor changes needed
+1) add redis 
+2) signOut 
+3) implementation of JWt inside cookie
