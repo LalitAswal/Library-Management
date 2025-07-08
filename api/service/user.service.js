@@ -3,11 +3,13 @@ import jwt from "jsonwebtoken";
 import User from "../database/userdb.js";
 //env
 import dotenv from "dotenv";
-dotenv.config()
+dotenv.config();
 
 //for file read-write
 import fs from "fs";
 import csvParser from "csv-parser";
+import Book from "../database/booksdb.js";
+import BorrowHistory from "../database/borrowHistorydb.js";
 
 export const userRegistrationService = async (userName, password) => {
   const existingUser = await User.findOne({ where: { username: userName } });
@@ -15,7 +17,10 @@ export const userRegistrationService = async (userName, password) => {
     throw new Error("Username already taken");
   }
 
-  const hashedPassword = await bcrypt.hash(password, Number(process.env.JWT_SALT_ROUNDS));
+  const hashedPassword = await bcrypt.hash(
+    password,
+    Number(process.env.JWT_SALT_ROUNDS)
+  );
 
   const newUser = await User.create({
     username: userName,
@@ -52,11 +57,10 @@ export const deleteUserService = async (id) => {
     {
       where: {
         id,
-        role:"member",
+        role: "member",
       },
       returning: true,
     }
-    
   );
   if (!result || result[1].length === 0) {
     throw new Error(`no member found with ${id}`);
@@ -80,31 +84,53 @@ export const getAllUsersService = async () => {
   return result;
 };
 
+export const userBorrowedBookListService = async (userId) => {
+  const result = await BorrowHistory.findAll({
+    where: { userId }, 
+    include: [
+      {
+        model: Book,
+        attributes: ["title", "author"],
+      },
+    ],
+  });
+
+  if (!result || result.length < 1) {
+    throw new Error("No borrowed books found for this user.");
+  }
+
+  return result;
+};
+
 export const userUpdateService = async (id, username, role) => {
-
-  let updateData ={};
-  if(username){
-    updateData.username = username
+  let updateData = {};
+  if (username) {
+    updateData.username = username;
   }
 
-  if(role){
-    updateData.role = role
+  if (role) {
+    updateData.role = role;
   }
-  const result = await User.update({updateData}, 
+  const result = await User.update(
+    { updateData },
     {
-      where:{
-        id:id
+      where: {
+        id: id,
       },
       returning: true,
-    })
+    }
+  );
 
-    return result;
+  return result;
 };
 
 export const userDetailsService = async (id) => {
-  const userDetails = await User.findByPk(id)
-  if(!userDetails){
-    throw new Error("User doesn't exist")
+  const userDetails = await User.findByPk(id, {
+    attributes: { exclude: ["password"] },
+  });
+
+  if (!userDetails) {
+    throw new Error("User doesn't exist");
   }
   return userDetails;
 };

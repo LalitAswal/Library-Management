@@ -17,7 +17,7 @@ export const userAuth = async (req, res, next) => {
     }
 
     const decodedToken = jwt.verify(token, JWT_SECRET);
-    console.log("Token verification successful:", decodedToken);
+    console.log("Token verification successful:=========>", decodedToken);
 
     // Optionally, attach the decoded token to the request for use in subsequent middleware/routes
     req.user = decodedToken.id;

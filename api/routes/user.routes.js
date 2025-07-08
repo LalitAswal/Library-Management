@@ -6,7 +6,8 @@ import {
   getAllUsers,
 getUserDetails,
 userUpdate,
-addBulkUser
+addBulkUser,
+userBorrowedBookList
 } from "../controllers/user.controller.js";
 import { userAuth } from "../middleware/auth.js";
 import { checkPermission } from "../middleware/roleMiddleWare.js";
@@ -32,8 +33,9 @@ let upload = multer({ storage });
 // user routes 
 router.post("/register", registration);
 router.post("/login", login);
-router.get("/:id", getUserDetails);
-router.post("/userUpdate/:id",userAuth,checkPermission("update"), userUpdate);
+router.get("/profile", userAuth,getUserDetails);
+router.post("/userUpdate",userAuth,checkPermission("update"), userUpdate);
+router.get("/borrowedBookList",userAuth,checkPermission("viewAll"), userBorrowedBookList);
 
 
 // admin routes

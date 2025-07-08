@@ -23,7 +23,7 @@ export const addBook = async (req, res) => {
 
     res.status(201).json({
       message: "Book added successfully",
-      data: result,
+      response: result,
     });
   } catch (error) {
     console.error("Error adding book:", error);
@@ -46,7 +46,7 @@ export const updateBook = async (req, res) => {
 
     res.status(201).json({
       message: "Book updated successfully",
-      data: result,
+      response: result,
     });
   } catch (error) {
     console.error("Error updating book:", error);
@@ -81,7 +81,7 @@ export const borrowedBookList = async (req, res) => {
 
     res.status(200).json({
       message: "Borrowed book list fetched successfully",
-      data: result,
+      response: result,
     });
   } catch (error) {
     console.error("Error fetching borrowed book list:", error);
@@ -95,7 +95,7 @@ export const allBooksList = async (req, res) => {
 
     res.status(200).json({
       message: "All books list fetched successfully",
-      data: result,
+      response: result,
     });
   } catch (error) {
     console.error("Error fetching all books list:", error);
