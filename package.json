@@ -13,7 +13,11 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "prepare": "husky install"
+  },
+  "link-staged":{
+    "**/*":"prettier --write --ignore-unknown"
   },
   "name": "iit-m--server",
   "version": "1.0.0",
@@ -23,6 +27,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "nodemon": "^3.1.7",
+    "prettier": "3.6.2"
+  },
+  "script": {
+    "prepare": "husky install"
   }
 }
