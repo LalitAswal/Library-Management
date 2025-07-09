@@ -1,26 +1,23 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import User from "../database/userdb.js";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from '../database/userdb.js';
 //env
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
 
 //for file read-write
-import fs from "fs";
-import csvParser from "csv-parser";
-import Book from "../database/booksdb.js";
-import BorrowHistory from "../database/borrowHistorydb.js";
+import fs from 'fs';
+import csvParser from 'csv-parser';
+import Book from '../database/booksdb.js';
+import BorrowHistory from '../database/borrowHistorydb.js';
 
 export const userRegistrationService = async (userName, password) => {
   const existingUser = await User.findOne({ where: { username: userName } });
   if (existingUser?.dataValues) {
-    throw new Error("Username already taken");
+    throw new Error('Username already taken');
   }
 
-  const hashedPassword = await bcrypt.hash(
-    password,
-    Number(process.env.JWT_SALT_ROUNDS)
-  );
+  const hashedPassword = await bcrypt.hash(password, Number(process.env.JWT_SALT_ROUNDS));
 
   const newUser = await User.create({
     username: userName,
@@ -32,21 +29,19 @@ export const userRegistrationService = async (userName, password) => {
 export const loginUserService = async (userName, password) => {
   const user = await User.findOne({ where: { username: userName } });
   if (!user) {
-    console.error("Incorrect username");
+    console.error('Incorrect username');
     throw new Error(`Incorrect username and password`);
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    console.error("Incorrect password");
+    console.error('Incorrect password');
     throw new Error(`Incorrect username and password`);
   }
 
-  const token = jwt.sign(
-    { id: user.id, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" }
-  );
+  const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
 
   return token;
 };
@@ -57,7 +52,7 @@ export const deleteUserService = async (id) => {
     {
       where: {
         id,
-        role: "member",
+        role: 'member',
       },
       returning: true,
     }
@@ -73,11 +68,11 @@ export const getAllUsersService = async () => {
     {},
     {
       where: {
-        role: "member",
+        role: 'member',
       },
     }
   );
-  console.log("checking result", result);
+  console.log('checking result', result);
   if (result.length < 1) {
     throw new Error(`no member list found `);
   }
@@ -86,17 +81,17 @@ export const getAllUsersService = async () => {
 
 export const userBorrowedBookListService = async (userId) => {
   const result = await BorrowHistory.findAll({
-    where: { userId }, 
+    where: { userId },
     include: [
       {
         model: Book,
-        attributes: ["title", "author"],
+        attributes: ['title', 'author'],
       },
     ],
   });
 
   if (!result || result.length < 1) {
-    throw new Error("No borrowed books found for this user.");
+    throw new Error('No borrowed books found for this user.');
   }
 
   return result;
@@ -126,7 +121,7 @@ export const userUpdateService = async (id, username, role) => {
 
 export const userDetailsService = async (id) => {
   const userDetails = await User.findByPk(id, {
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
   });
 
   if (!userDetails) {
@@ -138,20 +133,20 @@ export const userDetailsService = async (id) => {
 export const bulkAddUserService = (filePath) => {
   return new Promise((resolve, reject) => {
     const users = [];
-    console.log("checking file path service");
+    console.log('checking file path service');
 
     // Parse the CSV file
     fs.createReadStream(filePath)
       .pipe(csvParser())
-      .on("data", (row) => {
+      .on('data', (row) => {
         users.push({
           username: row.username,
           password: row.password,
-          role: row.role || "member",
+          role: row.role || 'member',
           token: row.token || null,
         });
       })
-      .on("end", async () => {
+      .on('end', async () => {
         try {
           // Bulk insert into the database
           await User.bulkCreate(users);
@@ -161,13 +156,13 @@ export const bulkAddUserService = (filePath) => {
 
           resolve({ success: true, count: users.length });
         } catch (error) {
-          console.error("Error inserting users:", error.message);
-          reject(new Error("Failed to add users to the database"));
+          console.error('Error inserting users:', error.message);
+          reject(new Error('Failed to add users to the database'));
         }
       })
-      .on("error", (error) => {
-        console.error("Error reading CSV file:", error.message);
-        reject(new Error("Error reading CSV file"));
+      .on('error', (error) => {
+        console.error('Error reading CSV file:', error.message);
+        reject(new Error('Error reading CSV file'));
       });
   });
 };

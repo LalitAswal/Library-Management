@@ -6,21 +6,21 @@ import {
   userUpdateService,
   userDetailsService,
   bulkAddUserService,
-  userBorrowedBookListService
-} from "../service/user.service.js";
+  userBorrowedBookListService,
+} from '../service/user.service.js';
 
 export const registration = async (req, res) => {
   try {
     const { userName, password } = req.body;
     if (!userName || !password) {
-      throw new Error("incorrect  Details");
+      throw new Error('incorrect  Details');
     }
     await userRegistrationService(userName, password);
     res.status(200).json({
-      message: "user Register Successfully",
+      message: 'user Register Successfully',
     });
   } catch (error) {
-    console.log("checking error message", error);
+    console.log('checking error message', error);
     res.status(409).json({
       message: error?.message,
     });
@@ -32,15 +32,15 @@ export const login = async (req, res) => {
     const { userName, password } = req.body;
 
     if (!userName || !password) {
-      throw new Error("Incorrect userName and password");
+      throw new Error('Incorrect userName and password');
     }
 
     const result = await loginUserService(userName, password);
-    console.log("checking34234234", result);
+    console.log('checking34234234', result);
     return res.status(200).json({
-      message: "user Register Successfully",
+      message: 'user Register Successfully',
       token: result,
-      userName:userName
+      userName: userName,
     });
   } catch (error) {
     res.status(409).json({
@@ -53,11 +53,11 @@ export const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
-      throw new Error("invalid id");
+      throw new Error('invalid id');
     }
     const result = await deleteUserService(id);
     res.status(200).json({
-      message: "user deleted successfully",
+      message: 'user deleted successfully',
       token: result,
     });
   } catch (error) {
@@ -72,7 +72,7 @@ export const getAllUsers = async (req, res) => {
     const result = await getAllUsersService();
 
     return res.status(200).json({
-      message: "All users fetched successfully",
+      message: 'All users fetched successfully',
       response: result,
     });
   } catch (error) {
@@ -84,11 +84,11 @@ export const getAllUsers = async (req, res) => {
 
 export const userUpdate = async (req, res) => {
   try {
-    const  id  = req.user;
+    const id = req.user;
     const { username, role } = req.body;
     const result = await userUpdateService(id, username, role);
     res.status(201).json({
-      message: "user Details update successfully",
+      message: 'user Details update successfully',
       response: result,
     });
   } catch (error) {
@@ -98,14 +98,14 @@ export const userUpdate = async (req, res) => {
   }
 };
 
-
 export const userBorrowedBookList = async (req, res) => {
   try {
-    const  id  = req.user;
+    const id = req.user;
     const { username, role } = req.body;
+
     const result = await userBorrowedBookListService(id, username, role);
     res.status(201).json({
-      message: "user Details update successfully",
+      message: 'user Details update successfully',
       response: result,
     });
   } catch (error) {
@@ -117,16 +117,16 @@ export const userBorrowedBookList = async (req, res) => {
 
 export const getUserDetails = async (req, res) => {
   try {
-    const id = req?.user
-    console.log("checkkg id", id);
+    const id = req?.user;
+    console.log('checkkg id', id);
     const result = await userDetailsService(id);
-    console.log('result------------->',result)
+    console.log('result------------->', result);
     return res.status(200).json({
-      message: "user Details fetch successfully",
+      message: 'user Details fetch successfully',
       response: result,
     });
   } catch (error) {
-    console.log('checking err0000000000000',error)
+    console.log('checking err0000000000000', error);
     return res.status(500).json({
       message: error.message,
     });
@@ -135,11 +135,11 @@ export const getUserDetails = async (req, res) => {
 
 export const addBulkUser = async (req, res) => {
   try {
-    const filePath = req?.file?.path ?? "";
+    const filePath = req?.file?.path ?? '';
     console.log('checking file path', req);
 
     if (!filePath) {
-      throw new Error("file not found");
+      throw new Error('file not found');
     }
 
     const result = await bulkAddUserService(filePath);
@@ -147,11 +147,11 @@ export const addBulkUser = async (req, res) => {
     console.log('checking result', result);
 
     return res.status(200).json({
-      message: "Users added successfully",
+      message: 'Users added successfully',
       response: result,
     });
   } catch (error) {
-    console.error("Error adding bulk users:", error.message);
+    console.error('Error adding bulk users:', error.message);
 
     return res.status(500).json({
       message: error.message,

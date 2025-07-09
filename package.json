@@ -14,10 +14,12 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
-  "link-staged":{
-    "**/*":"prettier --write --ignore-unknown"
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,html}": [
+      "prettier --write"
+    ]
   },
   "name": "iit-m--server",
   "version": "1.0.0",
@@ -31,8 +33,5 @@
     "lint-staged": "^16.1.2",
     "nodemon": "^3.1.7",
     "prettier": "3.6.2"
-  },
-  "script": {
-    "prepare": "husky install"
   }
 }
