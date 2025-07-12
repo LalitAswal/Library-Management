@@ -150,7 +150,6 @@ export const returnBook = async (req, res) => {
 export const searchBook = async (req, res) => {
   try {
     const { title = '', author = '', status = '' } = req.query ?? '';
-    console.log('checking query', req.query);
     const result = await searchBookService(title, author, status);
 
     res.status(201).json({
