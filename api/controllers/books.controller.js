@@ -149,10 +149,14 @@ export const returnBook = async (req, res) => {
 
 export const searchBook = async (req, res) => {
   try {
-    const { title = '', author = '', status = '' } = req.query ?? '';
-    const result = await searchBookService(title, author, status);
+    let { title = '', author = '', status = '' } = req.query ?? {};
+    console.log('req.query', req.query);
+    status = status.toUpperCase();
 
-    res.status(201).json({
+    const result = await searchBookService(title, author, status);
+    console.log('result', result);
+
+    res.status(200).json({
       message: 'Book search result',
       response: result,
     });

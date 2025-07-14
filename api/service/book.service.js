@@ -114,21 +114,13 @@ export const returnBookService = async (id) => {
 
 export const searchBookService = async (title = '', author = '', status = '') => {
   const query = {};
-  console.table(title, author, status);
-  if (title) {
-    query.title = title;
-  }
-  if (author) {
-    query.author = author;
-  }
-  if (status) {
-    query.status = status;
-  }
-  if (id) {
-    query.id = id;
-  }
+  console.table({ title, author, status });
 
-  const result = await Book.findAll({ query });
+  if (title) query.title = title;
+  if (author) query.author = author;
+  if (status) query.status = status;
+
+  const result = await Book.findAll({ where: query });
 
   return result;
 };
