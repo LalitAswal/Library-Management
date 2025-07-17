@@ -64,14 +64,12 @@ export const deleteUserService = async (id) => {
 };
 
 export const getAllUsersService = async () => {
-  const result = await User.findAll(
-    {},
-    {
-      where: {
-        role: 'member',
-      },
-    }
-  );
+  const result = await User.findAll({
+    where: {
+      role: 'member',
+    },
+  });
+
   console.log('checking result', result);
   if (result.length < 1) {
     throw new Error(`no member list found `);

@@ -1,12 +1,11 @@
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 // Import routes
-import userRoutes from "./api/routes/user.routes.js";
-import bookRoutes from "./api/routes/books.routes.js";
-import "./api/config/db.js";
-
+import userRoutes from './api/routes/user.routes.js';
+import bookRoutes from './api/routes/books.routes.js';
+import './api/config/db.js';
 
 dotenv.config();
 
@@ -16,15 +15,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Library Management API!");
-  console.log("Client IP:", req.ip);
+app.get('/', (req, res) => {
+  res.send('Welcome to Library Management API!');
+  console.log('Client IP:', req.ip);
 });
 
-app.use("/user", userRoutes);
-app.use("/book", bookRoutes);
-
-
+app.use('/user', userRoutes);
+app.use('/book', bookRoutes);
 
 // sequelizeDB();
 

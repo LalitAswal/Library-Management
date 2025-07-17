@@ -70,7 +70,7 @@ export const deleteUser = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const result = await getAllUsersService();
-
+    console.log('checking user list ---------->');
     return res.status(200).json({
       message: 'All users fetched successfully',
       response: result,
