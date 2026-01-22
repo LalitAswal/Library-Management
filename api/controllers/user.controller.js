@@ -11,11 +11,11 @@ import {
 
 export const registration = async (req, res) => {
   try {
-    const { userName, password } = req.body;
+    const { userName, password, email } = req.body;
     if (!userName || !password) {
       throw new Error('incorrect  Details');
     }
-    await userRegistrationService(userName, password);
+    await userRegistrationService(userName, password, email);
     res.status(200).json({
       message: 'user Register Successfully',
     });

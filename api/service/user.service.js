@@ -11,7 +11,7 @@ import csvParser from 'csv-parser';
 import Book from '../database/booksdb.js';
 import BorrowHistory from '../database/borrowHistorydb.js';
 
-export const userRegistrationService = async (userName, password) => {
+export const userRegistrationService = async (userName, password, email) => {
   const existingUser = await User.findOne({ where: { username: userName } });
   if (existingUser?.dataValues) {
     throw new Error('Username already taken');
@@ -22,6 +22,7 @@ export const userRegistrationService = async (userName, password) => {
   const newUser = await User.create({
     username: userName,
     password: hashedPassword,
+    email:email
   });
   return newUser?.id;
 };
