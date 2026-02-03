@@ -2,3 +2,44 @@ Minor changes needed
 1) add redis 
 2) signOut 
 3) implementation of JWt inside cookie
+Add:
+
+dueDate
+
+fineAmount
+
+finePaid
+Due-date reminders
+
+Overdue warnings
+
+Book availability alerts
+Who deleted books
+
+Who bulk uploaded
+
+Who updated roles
+Auto fine calculation on overdue
+
+Fine slab (₹5/day, ₹10/day etc.)
+
+Block borrowing if fine > threshold
+
+Pay fine (mock or Razorpay)
+AI Recommendation Engine 🔥
+
+Based on borrow history
+
+Category similarity
+
+Popularity score
+Admin types:
+
+“Show users with most fines”
+
+AI converts → API call → summary.
+Winston logs
+
+Request ID tracing
+
+Error monitoring
