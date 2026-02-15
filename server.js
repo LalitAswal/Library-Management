@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 // Import routes
 import userRoutes from './api/routes/user.routes.js';
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to Library Management API!');
   console.log('Client IP:', req.ip);
 });
+app.use(cookieParser());
 
 app.use('/user', userRoutes);
 app.use('/book', bookRoutes);

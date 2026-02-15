@@ -1,13 +1,10 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../config/db.js";
-import User from "./userdb.js";
-import Book from "./booksdb.js";
-
-
-// book return field // userId in array // books count as it can be multiple books 
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/db.js';
+import User from './userdb.js';
+import Book from './booksdb.js';
 
 const BorrowHistory = sequelize.define(
-  "borrowHistory",
+  'borrowHistory',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,7 +16,7 @@ const BorrowHistory = sequelize.define(
       allowNull: false,
       references: {
         model: User,
-        key: "id",
+        key: 'id',
       },
     },
     bookId: {
@@ -27,7 +24,7 @@ const BorrowHistory = sequelize.define(
       allowNull: false,
       references: {
         model: Book,
-        key: "id",
+        key: 'id',
       },
     },
     borrowDate: {
@@ -41,14 +38,14 @@ const BorrowHistory = sequelize.define(
     },
   },
   {
-    tableName: "borrow_history",
+    tableName: 'borrow_history',
     timestamps: true,
   }
 );
 
-User.hasMany(BorrowHistory, { foreignKey: "userId" });
-Book.hasMany(BorrowHistory, { foreignKey: "bookId" });
-BorrowHistory.belongsTo(User, { foreignKey: "userId" });
-BorrowHistory.belongsTo(Book, { foreignKey: "bookId" });
+User.hasMany(BorrowHistory, { foreignKey: 'userId' });
+Book.hasMany(BorrowHistory, { foreignKey: 'bookId' });
+BorrowHistory.belongsTo(User, { foreignKey: 'userId' });
+BorrowHistory.belongsTo(Book, { foreignKey: 'bookId' });
 
 export default BorrowHistory;

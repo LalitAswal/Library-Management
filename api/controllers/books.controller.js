@@ -91,7 +91,14 @@ export const borrowedBookList = async (req, res) => {
 
 export const allBooksList = async (req, res) => {
   try {
-    const result = await allBooksListService();
+    const { cursor, limit = 10, sortBy = 'id', order = 'asc' } = req.query;
+
+    const result = await allBooksListService({
+      cursor: cursor ? Number(cursor) : undefined,
+      limit: Number(limit),
+      sortBy,
+      order,
+    });
 
     res.status(200).json({
       message: 'All books list fetched successfully',

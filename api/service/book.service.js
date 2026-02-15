@@ -1,7 +1,8 @@
 import Book from '../database/booksdb.js';
 import BorrowHistory from '../database/borrowHistorydb.js';
-import fs from 'fs';
 import csvParser from 'csv-parser';
+import fs from 'fs';
+import { Op } from 'sequelize';
 
 export const addBookService = async (title, author) => {
   const bookIsExists = await Book.findOne({
@@ -51,9 +52,34 @@ export const borrowedBookListService = async () => {
   return borrowedBookList;
 };
 
-export const allBooksListService = async () => {
-  const allBooksList = await Book.findAll({ where: { isDeleted: false } });
-  return allBooksList;
+export const allBooksListService = async ({ cursor, limit = 10, sortBy = 'id', order = 'asc' }) => {
+  const allowedSortFields = ['id', 'title', 'author', 'createdAt'];
+
+  const finalSortField = allowedSortFields.includes(sortBy) ? sortBy : 'id';
+
+  const finalOrder = order === 'desc' ? 'DESC' : 'ASC';
+
+  const whereCondition = {
+    isDeleted: false,
+  };
+
+  if (cursor) {
+    whereCondition.id = finalOrder === 'ASC' ? { [Op.gt]: cursor } : { [Op.lt]: cursor };
+  }
+
+  const books = await Book.findAll({
+    where: whereCondition,
+    order: [
+      [finalSortField, finalOrder],
+      ['id', 'ASC'],
+    ],
+    limit,
+  });
+
+  return {
+    data: books,
+    nextCursor: books.length ? books.at(-1).id : null,
+  };
 };
 
 export const borrowBooksService = async (id, userId) => {

@@ -7,6 +7,7 @@ import {
   userDetailsService,
   bulkAddUserService,
   userBorrowedBookListService,
+  refreshTokenService,
 } from '../service/user.service.js';
 
 export const registration = async (req, res) => {
@@ -35,16 +36,76 @@ export const login = async (req, res) => {
       throw new Error('Incorrect userName and password');
     }
 
-    const result = await loginUserService(userName, password);
-    console.log('checking34234234', result);
+    const token = await loginUserService(userName, password);
+
+    res.cookie('accessToken', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      maxAge: 60 * 60 * 1000,
+    });
+
     return res.status(200).json({
-      message: 'user Register Successfully',
-      token: result,
-      userName: userName,
+      message: 'User logged in successfully',
+      userName,
     });
   } catch (error) {
-    res.status(409).json({
+    return res.status(401).json({
       message: error?.message,
+    });
+  }
+};
+
+export const signOut = async (req, res) => {
+  try {
+    const token = req.cookies.refreshToken;
+
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+
+      const user = await User.findByPk(decoded.id);
+
+      if (user) {
+        user.token = null;
+        await user.save();
+      }
+    }
+
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
+
+    res.status(200).json({ message: 'Logged out successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Logout failed' });
+  }
+};
+
+export const refreshTokenHandler = async (req, res) => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+
+    const { newAccessToken, newRefreshToken } = await refreshTokenService(refreshToken);
+
+    res.cookie('accessToken', newAccessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      maxAge: 15 * 60 * 1000,
+    });
+
+    res.cookie('refreshToken', newRefreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    return res.status(200).json({
+      message: 'Token refreshed successfully',
+    });
+  } catch (error) {
+    return res.status(403).json({
+      message: error.message || 'Invalid or expired refresh token',
     });
   }
 };
@@ -70,7 +131,6 @@ export const deleteUser = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const result = await getAllUsersService();
-    console.log('checking user list ---------->');
     return res.status(200).json({
       message: 'All users fetched successfully',
       response: result,
@@ -118,15 +178,12 @@ export const userBorrowedBookList = async (req, res) => {
 export const getUserDetails = async (req, res) => {
   try {
     const id = req?.user;
-    console.log('checkkg id', id);
     const result = await userDetailsService(id);
-    console.log('result------------->', result);
     return res.status(200).json({
       message: 'user Details fetch successfully',
       response: result,
     });
   } catch (error) {
-    console.log('checking err0000000000000', error);
     return res.status(500).json({
       message: error.message,
     });
