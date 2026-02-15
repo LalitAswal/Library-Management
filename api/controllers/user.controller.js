@@ -33,21 +33,29 @@ export const login = async (req, res) => {
     const { userName, password } = req.body;
 
     if (!userName || !password) {
-      throw new Error('Incorrect userName and password');
+      throw new Error('Incorrect username or password');
     }
 
-    const token = await loginUserService(userName, password);
+    const { accessToken, refreshToken } = await loginUserService(userName, password);
 
-    res.cookie('accessToken', token, {
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    res.cookie('accessToken', accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict',
-      maxAge: 60 * 60 * 1000,
+      sameSite: isProduction ? 'None' : 'Lax',
+      maxAge: 15 * 60 * 1000, // 15 minutes
+    });
+
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: isProduction ? 'None' : 'Lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     return res.status(200).json({
       message: 'User logged in successfully',
-      userName,
     });
   } catch (error) {
     return res.status(401).json({

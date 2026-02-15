@@ -33,7 +33,7 @@ let upload = multer({ storage });
 router.post('/register', registration);
 router.post('/login', login);
 router.post('/singOut', signOut);
-router.get('/refreshToken', refreshTokenHandler);
+router.post('/refreshToken', refreshTokenHandler);
 router.get('/profile', userAuth, getUserDetails);
 router.post('/userUpdate', userAuth, checkPermission('update'), userUpdate);
 router.get('/borrowedBookList', userAuth, checkPermission('viewAll'), userBorrowedBookList);

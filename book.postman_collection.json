@@ -1,802 +1,1381 @@
 {
-	"info": {
-		"_postman_id": "ee714b44-96d4-47d3-9d61-ff258eadf07a",
-		"name": "books",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20327354"
-	},
-	"item": [
-		{
-			"name": "get all book",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"name": "content-type",
-						"type": "text"
-					},
-					{
-						"key": "Content-Length",
-						"value": "<calculated when request is sent>",
-						"name": "content-length",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/book/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Book Details",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"name": "content-type",
-						"type": "text"
-					},
-					{
-						"key": "Content-Length",
-						"value": "<calculated when request is sent>",
-						"name": "content-length",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/book/bookDetails/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"bookDetails",
-						"7"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Book Details",
-					"originalRequest": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/book/bookDetails/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"book",
-								"bookDetails",
-								"3"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "JSON",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express",
-							"type": "text"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*",
-							"type": "text"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8",
-							"type": "text"
-						},
-						{
-							"key": "Content-Length",
-							"value": "255",
-							"type": "text"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"ff-GyQTarlnI1TWgpLkcH19zilzl9U\"",
-							"type": "text"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 20 Nov 2024 04:44:33 GMT",
-							"type": "text"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive",
-							"type": "text"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5",
-							"type": "text"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Book Details fetched successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"title\": \"The Seven Husbands of Evelyn Hugo\",\n        \"author\": \"Taylor Jenkins Reid\",\n        \"status\": \"AVAILABLE\",\n        \"isDeleted\": false,\n        \"createdAt\": \"2024-10-09T04:26:32.367Z\",\n        \"updatedAt\": \"2024-10-09T04:26:32.367Z\"\n    }\n}"
-				}
-			]
-		},
-		{
-			"name": "create book",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "// [\n    // {\n    //     \"title\": \"The Night Circus\",\n    //     \"author\": \"Erin Morgenstern\"\n    // }\n\n    // {\n    //     \"title\": \"Where the Crawdads Sing\",\n    //     \"author\": \"Delia Owens\"\n    // }\n    // {\n    //     \"title\": \"The Silent Patient\",\n    //     \"author\": \"Alex Michaelides\"\n    // }\n    // {\n    //     \"title\": \"The Seven Husbands of Evelyn Hugo\",\n    //     \"author\": \"Taylor Jenkins Reid\"\n    // }\n    // {\n    //     \"title\": \"Circe\",\n    //     \"author\": \"Madeline Miller\"\n    // }\n    // {\n    //     \"title\": \"The Vanishing Half\",\n    //     \"author\": \"Brit Bennett\"\n    // }\n    // {\n    //     \"title\": \"Little Fires Everywhere\",\n    //     \"author\": \"Celeste Ng\"\n    // }\n    // {\n    //     \"title\": \"Big Little Lies\",\n    //     \"author\": \"Liane Moriarty\"\n    // }\n    // {\n    //     \"title\": \"Normal People\",\n    //     \"author\": \"Sally Rooney\"\n    // }\n    {\n        \"title\": \"Educated\",\n        \"author\": \"Tara Westover\"\n    }\n// ]\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/book/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update book",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/book/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete book",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/book/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n     \"userName\": \"lalitaswal\",\n    \"password\": \"testing123\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/user/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "registration",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userName\": \"lalit456\",\n    \"password\": \"testing123\"\n    // \"emailAccount\": \"lalitaswal@123\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/user/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deleteuser",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/user/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get All users",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczMTc0MzEwNiwiZXhwIjoxNzMxNzQ2NzA2fQ.tGkWajdjmZaWpNogTDTAtA4J5YeigbppWsjCZF8mlWU",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/user/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						""
-					],
-					"query": [
-						{
-							"key": "Authorization",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczMTc0MzEwNiwiZXhwIjoxNzMxNzQ2NzA2fQ.tGkWajdjmZaWpNogTDTAtA4J5YeigbppWsjCZF8mlWU",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "borrow books",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\":2,\n    \"userId\":6\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/book/borrowBook",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"borrowBook"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "return book",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/book/returnBook/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"returnBook",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "checking server",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "borrowedBooks user based",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/book/borrowedBooks",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"book",
-						"borrowedBooks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get all users",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8000/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update user-information",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Cache-Control",
-						"value": "no-cache",
-						"name": "cache-control",
-						"type": "text"
-					},
-					{
-						"key": "Postman-Token",
-						"value": "<calculated when request is sent>",
-						"name": "postman-token",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"name": "content-type",
-						"type": "text"
-					},
-					{
-						"key": "Content-Length",
-						"value": "<calculated when request is sent>",
-						"name": "content-length",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "<calculated when request is sent>",
-						"name": "host",
-						"type": "text"
-					},
-					{
-						"key": "User-Agent",
-						"value": "PostmanRuntime/7.39.1",
-						"name": "user-agent",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*",
-						"name": "accept",
-						"type": "text"
-					},
-					{
-						"key": "Accept-Encoding",
-						"value": "gzip, deflate, br",
-						"name": "accept-encoding",
-						"type": "text"
-					},
-					{
-						"key": "Connection",
-						"value": "keep-alive",
-						"name": "connection",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYxNzYxMSwiZXhwIjoxNzM0NjIxMjExfQ.fJHMxAux-JerGqe-CMFpirq2poajI7Cm9b2FCWeQhDc",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\":\"Aswal12423\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/user/userUpdate/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"userUpdate",
-						"2"
-					],
-					"query": [
-						{
-							"key": "Authorization",
-							"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "d2054cc0-f331-4e3a-b9c5-a483df65279e",
+    "name": "library Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20327354"
+  },
+  "item": [
+    {
+      "name": "Books apis",
+      "item": [
+        {
+          "name": "get all book",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Book Details",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/bookDetails/3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "bookDetails", "3"]
+            }
+          },
+          "response": [
+            {
+              "name": "Book Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lbWJlciIsImlhdCI6MTcyODU0NzQ3OCwiZXhwIjoxNzI4NTUxMDc4fQ.UOteTOY_iptcM30YGZm6PPZLYntVUzveSLqgLaWjWR4",
+                    "type": "text",
+                    "id": 0
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/book/bookDetails/3",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8000",
+                  "path": ["book", "bookDetails", "3"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "JSON",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express",
+                  "type": "text"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "255",
+                  "type": "text"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ff-GyQTarlnI1TWgpLkcH19zilzl9U\"",
+                  "type": "text"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 20 Nov 2024 04:44:33 GMT",
+                  "type": "text"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "type": "text"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Book Details fetched successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"title\": \"The Seven Husbands of Evelyn Hugo\",\n        \"author\": \"Taylor Jenkins Reid\",\n        \"status\": \"AVAILABLE\",\n        \"isDeleted\": false,\n        \"createdAt\": \"2024-10-09T04:26:32.367Z\",\n        \"updatedAt\": \"2024-10-09T04:26:32.367Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "create book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// [\n    {\n        \"title\": \"The Night Circus\",\n        \"author\": \"Erin Morgenstern\"\n    }\n\n    // {\n    //     \"title\": \"Where the Crawdads Sing\",\n    //     \"author\": \"Delia Owens\"\n    // }\n    // {\n    //     \"title\": \"The Silent Patient\",\n    //     \"author\": \"Alex Michaelides\"\n    // }\n    // {\n    //     \"title\": \"The Seven Husbands of Evelyn Hugo\",\n    //     \"author\": \"Taylor Jenkins Reid\"\n    // }\n    // {\n    //     \"title\": \"Circe\",\n    //     \"author\": \"Madeline Miller\"\n    // }\n    // {\n    //     \"title\": \"The Vanishing Half\",\n    //     \"author\": \"Brit Bennett\"\n    // }\n    // {\n    //     \"title\": \"Little Fires Everywhere\",\n    //     \"author\": \"Celeste Ng\"\n    // }\n    // {\n    //     \"title\": \"Big Little Lies\",\n    //     \"author\": \"Liane Moriarty\"\n    // }\n    // {\n    //     \"title\": \"Normal People\",\n    //     \"author\": \"Sally Rooney\"\n    // }\n    {\n        \"title\": \"Educated\",\n        \"author\": \"Tara Westover\"\n    }\n// ]\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "bulkAddBook",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "fileUploadError": "",
+                  "src": "/C:/Users/Lalit Aswal/Downloads/books_1000_real.csv"
+                }
+              ],
+              "options": {
+                "formdata": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/bulkAddBook",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "bulkAddBook"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update book",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"The Silent Patient\",\n    \"author\": \"Alex Michaelide\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/book/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "borrow books",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\":2,\n    \"userId\":6\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/borrowBook",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "borrowBook"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "return book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/book/returnBook/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "returnBook", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "borrowedBooks user based",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "name": "cache-control",
+                "sortOrder": 2,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "postman-token",
+                "sortOrder": 3,
+                "infoTitle": "We recommend using this header",
+                "info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "host",
+                "sortOrder": 6,
+                "infoTitle": "We recommend using this header",
+                "info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "user-agent",
+                "sortOrder": 7,
+                "infoTitle": "We recommend using this header",
+                "info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept",
+                "sortOrder": 8,
+                "infoTitle": "We recommend using this header",
+                "info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept",
+                "value": "*/*",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept-encoding",
+                "sortOrder": 9,
+                "infoTitle": "We recommend using this header",
+                "info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "connection",
+                "sortOrder": 10,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "key": "authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                "type": "text",
+                "id": 0
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/book/borrowedBooks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "borrowedBooks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "borrowedBookList",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTc1MTk3MjYyNSwiZXhwIjoxNzUxOTc2MjI1fQ.HAlpaMEJLlQK0SKictH6sDeH6-bE9SCts-eymZjaHqM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/borrowedBookList",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "borrowedBookList"],
+              "query": [
+                {
+                  "key": "Authorization",
+                  "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTI1LCJyb2xlIjoibWVtYmVyIiwiaWF0IjoxNzUxOTg3MDQ5LCJleHAiOjE3NTE5OTA2NDl9.2-k3Dy1Ir50iOA4lYvbXaOSV1LwgGL2RYU6zzvEZFf0",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "update user-information Copy",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTc1MTk3MjYyNSwiZXhwIjoxNzUxOTc2MjI1fQ.HAlpaMEJLlQK0SKictH6sDeH6-bE9SCts-eymZjaHqM",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/user/profile",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8000",
+                  "path": ["user", "profile"],
+                  "query": [
+                    {
+                      "key": "Authorization",
+                      "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "291"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"123-GUpruTgvl3pVGe6PaKrThyGvffo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Jul 2025 11:22:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"user Details fetch successfully\",\n    \"response\": {\n        \"id\": 1,\n        \"username\": \"lalitaswal\",\n        \"password\": \"$2a$10$jWci6yMp6R2lOYq/fC6VrOIZ9joggMNoZ8GQSoS9IZM/dRdlMb5sq\",\n        \"token\": null,\n        \"role\": \"librarian\",\n        \"isDeleted\": false,\n        \"createdAt\": \"2024-10-09T04:29:44.312Z\",\n        \"updatedAt\": \"2024-10-09T04:29:44.312Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "search book",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNTMxNjk5NSwiZXhwIjoxNzM1MzIwNTk1fQ.P1fnbpt1DEkV2d4sPQmUCP5aU3dG17KxjFPIF_JgW2Q",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/book/searchBook?title=circe",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["book", "searchBook"],
+              "query": [
+                {
+                  "key": "Authorization",
+                  "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "title",
+                  "value": "circe"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "user Apis",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"userName\": \"lalitaswal\",\n    \"password\": \"testing123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "registration",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"userName\": \"admin32\",\n    \"password\": \"testing123\",\n    \"email\":\"testing@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bulk Registration",
+          "request": {
+            "auth": {
+              "type": "bearer"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data; boundary=<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNTM3MjQ3OSwiZXhwIjoxNzM1Mzc2MDc5fQ.Mty8cvk26MBhibcY-pWp6Sh-LbsXrr5EP0J2DZ1BVkE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "fileUploadError": "",
+                  "src": "/C:/Users/Lalit Aswal/Downloads/users_1000.csv"
+                }
+              ],
+              "options": {
+                "formdata": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/bulkAddUser",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "bulkAddUser"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteuser",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get All users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "name": "cache-control",
+                "sortOrder": 2,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "postman-token",
+                "sortOrder": 3,
+                "infoTitle": "We recommend using this header",
+                "info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "host",
+                "sortOrder": 6,
+                "infoTitle": "We recommend using this header",
+                "info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "user-agent",
+                "sortOrder": 7,
+                "infoTitle": "We recommend using this header",
+                "info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept",
+                "sortOrder": 8,
+                "infoTitle": "We recommend using this header",
+                "info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept",
+                "value": "*/*",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept-encoding",
+                "sortOrder": 9,
+                "infoTitle": "We recommend using this header",
+                "info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "connection",
+                "sortOrder": 10,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczMTc0MzEwNiwiZXhwIjoxNzMxNzQ2NzA2fQ.tGkWajdjmZaWpNogTDTAtA4J5YeigbppWsjCZF8mlWU",
+                "type": "text",
+                "id": 0
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/user/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", ""],
+              "query": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczMTc0MzEwNiwiZXhwIjoxNzMxNzQ2NzA2fQ.tGkWajdjmZaWpNogTDTAtA4J5YeigbppWsjCZF8mlWU",
+                  "type": "text",
+                  "id": 0,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "name": "cache-control",
+                "sortOrder": 2,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "postman-token",
+                "sortOrder": 3,
+                "infoTitle": "We recommend using this header",
+                "info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "host",
+                "sortOrder": 6,
+                "infoTitle": "We recommend using this header",
+                "info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "user-agent",
+                "sortOrder": 7,
+                "infoTitle": "We recommend using this header",
+                "info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept",
+                "sortOrder": 8,
+                "infoTitle": "We recommend using this header",
+                "info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept",
+                "value": "*/*",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept-encoding",
+                "sortOrder": 9,
+                "infoTitle": "We recommend using this header",
+                "info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "connection",
+                "sortOrder": 10,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                "type": "text",
+                "id": 0
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/user",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update user-information",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "name": "cache-control",
+                "sortOrder": 2,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "postman-token",
+                "sortOrder": 3,
+                "infoTitle": "We recommend using this header",
+                "info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+                "allowedToToggle": false,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to settings",
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "content-type",
+                "sortOrder": 4,
+                "infoTitle": "This header was automatically added",
+                "info": "The Content-Type header is added to help the server identify the media type of the request body that is present in this request.\n\nUse the request body tab to control the value or to remove this header.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to body",
+                "key": "Content-Type",
+                "value": "application/json",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "content-length",
+                "sortOrder": 5,
+                "infoTitle": "This header was automatically added",
+                "info": "The Content-Length header was added to indicate to the server the size of the request body that is added to this request. Server uses this value to parse the request body accurately.\n\nYou can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "previewSettingsLink": "Go to body",
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "host",
+                "sortOrder": 6,
+                "infoTitle": "We recommend using this header",
+                "info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "user-agent",
+                "sortOrder": 7,
+                "infoTitle": "We recommend using this header",
+                "info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept",
+                "sortOrder": 8,
+                "infoTitle": "We recommend using this header",
+                "info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept",
+                "value": "*/*",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "accept-encoding",
+                "sortOrder": 9,
+                "infoTitle": "We recommend using this header",
+                "info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "name": "connection",
+                "sortOrder": 10,
+                "infoTitle": "We recommend using this header",
+                "info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+                "allowedToToggle": true,
+                "disableEdit": true,
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true,
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYxNzYxMSwiZXhwIjoxNzM0NjIxMjExfQ.fJHMxAux-JerGqe-CMFpirq2poajI7Cm9b2FCWeQhDc",
+                "type": "text",
+                "id": 0
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/userUpdate/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "userUpdate", "2"],
+              "query": [
+                {
+                  "key": "Authorization",
+                  "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                  "type": "text",
+                  "id": 0,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "user profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTc1MTk3MjYyNSwiZXhwIjoxNzUxOTc2MjI1fQ.HAlpaMEJLlQK0SKictH6sDeH6-bE9SCts-eymZjaHqM",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/profile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "profile"],
+              "query": [
+                {
+                  "key": "Authorization",
+                  "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "update user-information Copy",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTc1MTk3MjYyNSwiZXhwIjoxNzUxOTc2MjI1fQ.HAlpaMEJLlQK0SKictH6sDeH6-bE9SCts-eymZjaHqM",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\":\"Aswal12423\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/user/profile",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8000",
+                  "path": ["user", "profile"],
+                  "query": [
+                    {
+                      "key": "Authorization",
+                      "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImxpYnJhcmlhbiIsImlhdCI6MTczNDYwMjA4MCwiZXhwIjoxNzM0NjA1NjgwfQ.XgeU9JB7kh2SK7LrG8KDtz-6eK0Wv9LXQ7lgybwBEp0",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "291"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"123-GUpruTgvl3pVGe6PaKrThyGvffo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 08 Jul 2025 11:22:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"user Details fetch successfully\",\n    \"response\": {\n        \"id\": 1,\n        \"username\": \"lalitaswal\",\n        \"password\": \"$2a$10$jWci6yMp6R2lOYq/fC6VrOIZ9joggMNoZ8GQSoS9IZM/dRdlMb5sq\",\n        \"token\": null,\n        \"role\": \"librarian\",\n        \"isDeleted\": false,\n        \"createdAt\": \"2024-10-09T04:29:44.312Z\",\n        \"updatedAt\": \"2024-10-09T04:29:44.312Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "refreshToken",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"userName\": \"lalitaswal\",\n    \"password\": \"testing123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/refreshToken",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "refreshToken"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "checking server",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "authToken",
+      "value": ""
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ]
 }

@@ -11,7 +11,7 @@ import csvParser from 'csv-parser';
 import Book from '../database/booksdb.js';
 import BorrowHistory from '../database/borrowHistorydb.js';
 import { USER_ROLE, DEFAULT_USER_ROLE } from '../../constants.js';
-import { generateAccessToken, generateRefreshToken } from '../../utils/generateToken.js';
+import { generateAccessToken, generateRefreshToken } from '../utils/generateToken.js';
 
 export const userRegistrationService = async (userName, password, email) => {
   const existingUser = await User.findOne({ where: { username: userName } });
@@ -167,7 +167,6 @@ export const bulkAddUserService = (filePath) => {
       .pipe(csvParser())
       .on('data', async (row) => {
         try {
-          // normalize role
           let role = DEFAULT_USER_ROLE;
 
           if (row.role) {
@@ -180,7 +179,6 @@ export const bulkAddUserService = (filePath) => {
             }
           }
 
-          // hash password
           const hashedPassword = await bcrypt.hash(row.password, 10);
 
           users.push({
