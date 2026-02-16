@@ -82,40 +82,63 @@ export const allBooksListService = async ({ cursor, limit = 10, sortBy = 'id', o
   };
 };
 
+import { sequelize } from '../config/db.js';
+
 export const borrowBooksService = async (id, userId) => {
-  const bookAvailableInBook = await Book.findOne({ where: { id } });
-  const bookInBorrowBook = await BorrowHistory.findOne({ where: { id } });
+  const transaction = await sequelize.transaction();
 
-  if (!bookAvailableInBook && !bookInBorrowBook) {
-    throw new Error(`Book doesn't exist`);
-  }
+  try {
+    const book = await Book.findOne({
+      where: { id },
+      transaction,
+      lock: transaction.LOCK.UPDATE,
+    });
 
-  if (bookInBorrowBook?.status === 'BORROWED') {
-    throw new Error(`Book ${bookInBorrowBook?.title} is not available`);
-  }
-
-  const borrowDate = new Date();
-  const returnDate = new Date(borrowDate);
-  returnDate.setDate(returnDate.getDate() + 30);
-
-  const borrowHistory = await BorrowHistory.create({
-    userId,
-    bookId: id,
-    borrowDate,
-    returnDate,
-  });
-  console.log('checking borrow history', borrowHistory);
-  const result = await Book.update(
-    { status: 'BORROWED' },
-    {
-      where: {
-        id: id,
-      },
-      returning: true,
+    if (!book) {
+      throw new Error("Book doesn't exist");
     }
-  );
 
-  return result;
+    if (book.status === 'BORROWED') {
+      throw new Error('Book is not available');
+    }
+
+    const existingBorrow = await BorrowHistory.findOne({
+      where: {
+        bookId: id,
+        userId: userId,
+        status: 'BORROWED',
+      },
+      transaction,
+    });
+
+    if (existingBorrow) {
+      throw new Error('You have already borrowed this book');
+    }
+
+    const borrowDate = new Date();
+    const returnDate = new Date();
+    returnDate.setDate(returnDate.getDate() + 30);
+
+    await BorrowHistory.create(
+      {
+        userId,
+        bookId: id,
+        borrowDate,
+        returnDate,
+        status: 'BORROWED',
+      },
+      { transaction }
+    );
+
+    await book.update({ status: 'BORROWED' }, { transaction });
+
+    await transaction.commit();
+
+    return book;
+  } catch (error) {
+    await transaction.rollback();
+    throw error;
+  }
 };
 
 export const returnBookService = async (id) => {
